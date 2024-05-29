@@ -1,15 +1,21 @@
 // You are given an array of objects representing employees in a company. Each object contains the following properties: name, age, and department. Your task is to write a function to calculate the average age of each department's employees. The function should return an object containing the department name and the summation of employees' age in each department.
 
 function employeess(employees) {
-  console.log(
-    employees.map((x) => {
-      let dep = `${x.department}:${x.age}`;
-      return dep;
-    })
-  );
+  let result = {};
+  count = 0;
+  employees.forEach((key) => {
+    if (key.department in result) {
+      result[key.department] += key.age;
+      count++;
+    } else {
+      result[key.department] = key.age;
+    }
+    count = 0;
+  });
+
+  console.log(result);
 }
 
-//Example Input:
 const employees = [
   { name: "Alice", age: 30, department: "Engineering" },
   { name: "Bob", age: 25, department: "Marketing" },
