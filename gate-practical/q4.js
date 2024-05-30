@@ -2,15 +2,13 @@
 
 function employeess(employees) {
   let result = {};
-  count = 0;
+
   employees.forEach((key) => {
     if (key.department in result) {
       result[key.department] += key.age;
-      count++;
     } else {
       result[key.department] = key.age;
     }
-    count = 0;
   });
 
   console.log(result);
